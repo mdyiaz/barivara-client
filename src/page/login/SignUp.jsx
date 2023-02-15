@@ -35,14 +35,14 @@ const SignUp = () => {
         // update User
         updateUser(fullName).then((data) => {
           const user = data.user;
+          console.log(user);
           toast.success("Successfully SingUp!");
         });
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.massage;
+        const errorMessage = error.message;
         toast.error(errorMessage);
-        console.log(error);
 
         // ..
       });
