@@ -3,15 +3,21 @@ import bg_svg from "../../asect/bg-svg/registraton-img.svg";
 import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const loginHandler = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    login(email, password)
+      .then((data) => {
+        const user = data.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  const data = useContext(AuthContext);
-  console.log(data);
 
   return (
     <div

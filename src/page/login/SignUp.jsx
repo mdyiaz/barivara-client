@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 // import bg_svg from '../../asect/bg-svg/16921580449449347440.jpg'
 import bg_svg from "../../asect/bg-svg/registraton-img.svg";
 import { AuthContext } from "../../Context/UserContext";
 const SignUp = () => {
-  const { singUp } = useContext(AuthContext);
-  console.log(singUp);
+  const { singUp, user, updateUser } = useContext(AuthContext);
+
   const regHandler = (event) => {
     event.preventDefault();
 
@@ -15,6 +16,7 @@ const SignUp = () => {
     const phone = from.phoneNumber.value;
     const password = from.password.value;
     const confirm_password = from.confirm_password.value;
+    const fullName = first_name + last_name;
 
     const userInfo = {
       first_name,
@@ -25,8 +27,28 @@ const SignUp = () => {
       confirm_password,
     };
 
-    singUp(email, password);
+    singUp(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+
+        // update User
+        updateUser(fullName).then((data) => {
+          const user = data.user;
+          toast.success("Successfully SingUp!");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.massage;
+        toast.error(errorMessage);
+        console.log(error);
+
+        // ..
+      });
   };
+
+  console.log(user);
   return (
     <div className="px-4" style={{ backgroundImage: `url(${bg_svg})` }}>
       <div
