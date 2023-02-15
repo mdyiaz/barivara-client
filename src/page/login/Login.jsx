@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import bg_svg from "../../asect/bg-svg/registraton-img.svg";
 import { AuthContext } from "../../Context/UserContext";
 
@@ -12,7 +13,8 @@ const Login = () => {
     login(email, password)
       .then((data) => {
         const user = data.user;
-        console.log(user);
+        toast.success("Login Success");
+        form.reset();
       })
       .catch((err) => {
         console.log(err);
