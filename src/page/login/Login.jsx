@@ -1,7 +1,14 @@
-import React from 'react'
-import bg_svg from '../../asect/bg-svg/registraton-img.svg'
+import React from "react";
+import bg_svg from "../../asect/bg-svg/registraton-img.svg";
 
 const Login = () => {
+  const loginHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
   return (
     <div
       className="min-h-screen px-4"
@@ -13,8 +20,8 @@ const Login = () => {
         <h1 className="text-center  mb-4 text-3xl text-primary font-semibold">
           Login
         </h1>
-        <form>
-          <div class=" rounded-lg flex flex-col gap-2 mb-4  ">
+        <form onSubmit={loginHandler}>
+          <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
             <label htmlFor="email" className="text-xl font-medium">
               Email
             </label>
@@ -23,11 +30,11 @@ const Login = () => {
               name="email"
               type="email"
               placeholder="Enter Your Email"
-              class="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
+              className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
           </div>
 
-          <div class=" rounded-lg flex flex-col gap-2 mb-4  ">
+          <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
             <label htmlFor="password" className="text-xl font-medium">
               Password
             </label>
@@ -35,7 +42,7 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="Enter Your Email"
-              class="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
+              className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
           </div>
 
@@ -47,7 +54,7 @@ const Login = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
