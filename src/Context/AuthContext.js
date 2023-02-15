@@ -3,7 +3,7 @@ import React, { createContext } from "react";
 const AuthContext = () => {
   return (
     <div>
-      <h2>Hello</h2>
+      <h2>Yiaz</h2>
     </div>
   );
 };
