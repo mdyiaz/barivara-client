@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 // import bg_svg from '../../asect/bg-svg/16921580449449347440.jpg'
 import bg_svg from "../../asect/bg-svg/registraton-img.svg";
+import { AuthContext } from "../../Context/UserContext";
 const SignUp = () => {
+  const { singUp } = useContext(AuthContext);
+  console.log(singUp);
   const regHandler = (event) => {
     event.preventDefault();
 
@@ -21,7 +24,8 @@ const SignUp = () => {
       password,
       confirm_password,
     };
-    console.log(userInfo);
+
+    singUp(email, password);
   };
   return (
     <div className="px-4" style={{ backgroundImage: `url(${bg_svg})` }}>
