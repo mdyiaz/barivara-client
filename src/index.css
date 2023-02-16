@@ -7,3 +7,21 @@
 * {
   font-family: "Gentium Book Plus", serif;
 }
+
+.homeCard {
+  overflow: hidden;
+  /* transition-delay: 1s; */
+}
+
+.homeCardDtls {
+  left: 0;
+  bottom: -30px;
+  transition: 0.3s;
+}
+.homeCard:hover .homeCardDtls {
+  bottom: 0px;
+}
+.homeCard:hover img {
+  opacity: 0.5;
+  transition: 0.5s;
+}
