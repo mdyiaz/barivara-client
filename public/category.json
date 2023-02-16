@@ -1,0 +1,30 @@
+[
+    {
+      "_id": "1",
+      "picture": "  https://i.ibb.co/sFgCsqL/building.png",
+      "category": "Family House"
+    },
+    {
+      "_id": "2",
+      "picture": "https://i.ibb.co/Jd97900/employee.png      ",
+      "category": "Sublet"
+    },
+    {
+      "_id": "3",
+      "picture": "https://i.ibb.co/mDg4LtD/hostel.png      ",
+      "category": "Bachelor"
+    },
+    {
+      "_id": "4",
+      "picture": "https://i.ibb.co/smGjMgQ/house.png      ",
+      "category": "Office"
+    },
+    {
+      "_id": "5",
+      "picture": "https://i.ibb.co/Np9p6x1/office.png",
+      "category": "Hostel"
+    }
+  ]
+
+
+
