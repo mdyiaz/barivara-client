@@ -2,12 +2,12 @@ import React from "react";
 
 const HomeCard = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <h2 className="text-4xl text-primary text-center font-semibold">
         Rooms & Apartments
       </h2>
 
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 mt-10">
         <div className=" rounded-lg relative homeCard">
           <img
             className="w-full rounded-lg"
