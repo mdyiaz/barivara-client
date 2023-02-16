@@ -23,7 +23,7 @@ const OurCategory = () => {
     <div className="mt-20 mb-20">
       <div className="grid lg:grid-cols-3 sm:grid-cols-1">
           <div className="flex justify-center items-center">
-              <h1 className="text-6xl font-bold text-teal-600 mb-10 lg:block hidden">Rental <br /> Category</h1>
+              <h1 className="text-7xl font-extrabold text-teal-600 mb-10 lg:block hidden">Rental <br /> Category</h1>
               <h1 className="text-4xl font-bold text-teal-600 mb-10  lg:hidden">Rental Category</h1>
           </div>
           <div className="grid col-span-2">
