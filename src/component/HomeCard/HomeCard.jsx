@@ -3,7 +3,7 @@ import React from "react";
 const HomeCard = () => {
   return (
     <div>
-      <h2>Home Card</h2>
+      <h2 className="text-4xl">Rooms & Apartments</h2>
     </div>
   );
 };
