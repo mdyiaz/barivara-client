@@ -7,7 +7,7 @@ const HomeCard = () => {
         Rooms & Apartments
       </h2>
 
-      <div className="grid grid-cols-3 mt-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">
         <div className=" rounded-lg relative homeCard">
           <img
             className="w-full rounded-lg"
