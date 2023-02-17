@@ -62,7 +62,7 @@ const Testimonial = () => {
                 <div className="">
                   <img
                     className="w-[100px] h-[100px] rounded-full"
-                    src="https://images.unsplash.com/photo-1611548224889-08f2aa1a88f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c21hcnQlMjBib3l8ZW58MHx8MHx8&w=1000&q=80"
+                    src="https://i.pinimg.com/736x/11/95/34/1195346a00109c8dba6abfa3053f4839.jpg"
                     alt=""
                   />
                 </div>
