@@ -25,3 +25,10 @@
   opacity: 0.5;
   transition: 0.5s;
 }
+
+.testimonial {
+  transition: 0.3s;
+}
+.testimonial:hover {
+  transform: scale(1.1);
+}
