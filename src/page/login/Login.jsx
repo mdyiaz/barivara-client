@@ -53,7 +53,7 @@ const Login = () => {
             <input
               id="password"
               type="password"
-              placeholder="Enter Your Email"
+              placeholder="Enter Your Passsword"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
           </div>

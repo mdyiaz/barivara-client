@@ -15,7 +15,7 @@ const HomeCard = () => {
             alt=""
           />
 
-          <div className="homeCardDtls absolute w-full  bg-primary text-white p-2">
+          <div className="homeCardDtls absolute w-full  text-white p-2 bg-gradient-to-r from-primary to-secondary">
             <h2 className="text-xl">Titles</h2>
             <div className="flex justify-between">
               <p>Price: 878777</p>

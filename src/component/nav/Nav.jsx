@@ -1,42 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/UserContext';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/UserContext";
 
 function Nav() {
+  const { user, logOut } = useContext(AuthContext);
 
-const {user, logOut} = useContext(AuthContext);
-
-
-const handleLogOut = () =>{
-  logOut()
-  .then(() => {})
-  .catch(err => console.error(err));
-}
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
 
   const menuItem = (
     <>
-      <li className='text-white font-bold'>
+      <li className="text-white font-bold">
         <Link to="/">Home</Link>
       </li>
-      <li className='text-white font-bold'>
+      <li className="text-white font-bold">
         <Link to="/login">Login</Link>
       </li>
-      <li className='text-white font-bold'>
+      <li className="text-white font-bold">
         <Link to="/sign-up">Register</Link>
       </li>
-      <li className='text-white font-bold'>
+      <li className="text-white font-bold">
         <Link to="/contactus">Contact Us</Link>
       </li>
-      <li className='text-white font-bold'>
+      <li className="text-white font-bold">
         <Link to="/aboutus">About Us</Link>
       </li>
     </>
-  )
+  );
 
   return (
-    <div className="shadow-lg">
-      <div className="navbar bg-black">
+    <div className="shadow-lg bg-black ">
+      <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,27 +60,43 @@ const handleLogOut = () =>{
               {menuItem}
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl text-white">Baribhara</Link>
+          <Link to="/" className="btn btn-ghost normal-case text-xl text-white">
+            Baribhara
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItem}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end dropdown ">
           {/* <Link to="/login" className="btn text-white">Login</Link> */}
 
-          { user?.uid ?  
-                    <>
-                        <li><button className='btn text-white' onClick={handleLogOut}>Log Out</button></li>
-                        
-                    </>
-                    :
-                    <li><Link className='btn text-white' to='/login'>Login</Link></li>
-               }
-
+          {user?.uid ? (
+            <>
+              <label tabIndex={0} className="btn">
+                <div className="">{user?.displayName}</div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link className="btn-sm" onClick={handleLogOut}>
+                    Log Out
+                  </Link>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <li>
+              <Link className="btn text-white" to="/login">
+                Login
+              </Link>
+            </li>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

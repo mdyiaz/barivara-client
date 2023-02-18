@@ -24,6 +24,9 @@ const Testimonial = () => {
 
   return (
     <div className=" container mx-auto mt-10">
+      <h2 className="text-4xl text-primary font-semibold text-center ">
+        SOME REVIEWS
+      </h2>
       <>
         <Swiper
           loop={true}
@@ -57,8 +60,8 @@ const Testimonial = () => {
         >
           <div className=""></div>
           {categorys.map((category) => (
-            <SwiperSlide>
-              <div className="bg-primary mt-8 testimonial text-white p-4 mb-10 rounded-lg">
+            <SwiperSlide key={category._id}>
+              <div className="bg-gradient-to-r from-primary to-secondary mt-8 testimonial text-white p-4 mb-10 rounded-lg">
                 <div className="">
                   <img
                     className="w-[100px] h-[100px] rounded-full"
