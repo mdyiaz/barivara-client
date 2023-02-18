@@ -67,13 +67,13 @@ function Nav() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItem}</ul>
         </div>
-        <div className="navbar-end dropdown ">
+        <div className="navbar-end dropdown flex justify-end ">
           {/* <Link to="/login" className="btn text-white">Login</Link> */}
 
           {user?.uid ? (
             <>
-              <label tabIndex={0} className="btn">
-                <div className="">{user?.displayName}</div>
+              <label tabIndex={0} className="btn btn-primary">
+                <div className="text-white">{user?.displayName}</div>
               </label>
               <ul
                 tabIndex={0}
