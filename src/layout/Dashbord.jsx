@@ -124,7 +124,7 @@ const Dashbord = () => {
               <Link to="/dashbord">Dashbord</Link>
             </li>
             <li>
-              <Link to="/add">Add Home</Link>
+              <Link to="/addhome">Add Home</Link>
             </li>
           </ul>
         </div>
