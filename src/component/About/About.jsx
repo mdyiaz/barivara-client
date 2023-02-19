@@ -11,6 +11,8 @@ const About = () => {
       <h1 className="text-center mt-14 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-800">
         Why Choose Us?
         Why Choose Us?
+
+        want to solved git problem
       </h1>
       <p className="text-center text-lg mt-2">
         Best offers from the house chef
