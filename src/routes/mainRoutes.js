@@ -1,6 +1,8 @@
 import About from "../component/About/About";
 import Contact from "../component/Contact/Contact";
-import Dashbord from "../layout/Dashbord";
+import AddHome from "../component/Dashbord/AddHome";
+import Status from "../component/Dashbord/Status";
+import DashbordLayout from "../layout/DashbordLayout";
 import SignUp from "../page/login/SignUp";
 import Login from "./../page/login/Login";
 const { createBrowserRouter } = require("react-router-dom");
@@ -36,7 +38,17 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashbord",
-    element: <Dashbord></Dashbord>,
+    element: <DashbordLayout></DashbordLayout>,
+    children: [
+      {
+        path: "/dashbord/",
+        element: <Status />,
+      },
+      {
+        path: "/dashbord/addhome",
+        element: <AddHome></AddHome>,
+      },
+    ],
   },
 ]);
 
