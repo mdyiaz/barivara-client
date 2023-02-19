@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashbord = () => {
   return (
@@ -114,15 +114,17 @@ const Dashbord = () => {
           >
             Open drawer
           </label> */}
+
+          <Outlet />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             <li>
-              <a>Sidebar Item 1</a>
+              <Link to="/dashbord">Dashbord</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to="/add">Add Home</Link>
             </li>
           </ul>
         </div>
