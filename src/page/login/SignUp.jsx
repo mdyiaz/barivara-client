@@ -37,7 +37,7 @@ const SignUp = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify("userInfo"),
+          body: JSON.stringify(userInfo),
         })
           .then((res) => res.json())
           .then((data) => {
