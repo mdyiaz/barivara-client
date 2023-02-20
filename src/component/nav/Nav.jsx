@@ -17,12 +17,11 @@ function Nav() {
       <li className="text-white font-bold">
         <Link to="/">Home</Link>
       </li>
+
       <li className="text-white font-bold">
-        <Link to="/login">Login</Link>
+        <Link to="/requestseller">Request Seller</Link>
       </li>
-      <li className="text-white font-bold">
-        <Link to="/sign-up">Register</Link>
-      </li>
+      
       <li className="text-white font-bold">
         <Link to="/contactus">Contact Us</Link>
       </li>

@@ -78,7 +78,7 @@ const AddHome = () => {
                 Select Cetagory
               </label>
               <select className="select w-full max-w-xs  select-bordered">
-                <option value="Homer">Homer</option>
+                <option value="Homer">Home</option>
               </select>
             </div>
           </div>
@@ -86,7 +86,7 @@ const AddHome = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
             <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
-                Bed Room
+                BedRoom
               </label>
               <select className="select w-full max-w-xs  select-bordered">
                 <option value={1}>1</option>
@@ -100,7 +100,7 @@ const AddHome = () => {
             </div>
             <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
-                Bath Room
+                BathRoom
               </label>
               <select className="select w-full max-w-xs  select-bordered">
                 <option value={1}>1</option>
@@ -129,7 +129,7 @@ const AddHome = () => {
             </div>
             <div className=" rounded-lg flex items-center gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
-                Watter
+                Water
               </label>
               <input
                 onChange={() => setGas(true)}

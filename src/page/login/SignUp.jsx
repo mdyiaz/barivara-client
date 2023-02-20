@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 // import bg_svg from '../../asect/bg-svg/16921580449449347440.jpg'
 import bg_svg from "../../asect/bg-svg/registraton-img.svg";
 import { AuthContext } from "../../Context/UserContext";
@@ -150,6 +151,7 @@ const SignUp = () => {
             </button>
           </div>
         </form>
+        <p>Already Have An Account? <span className="text-orange-500" ><Link to="/login">Login Here</Link></span> </p>
       </div>
     </div>
   );

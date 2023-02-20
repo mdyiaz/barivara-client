@@ -4,6 +4,7 @@ import AddHome from "../component/Dashbord/AddHome";
 import Status from "../component/Dashbord/Status";
 import DashbordLayout from "../layout/DashbordLayout";
 import SignUp from "../page/login/SignUp";
+import SellerRequest from "../page/Seller/SellerRequest/SellerRequest";
 import Login from "./../page/login/Login";
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../layout/main/MainLayout");
@@ -23,7 +24,7 @@ const routes = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/sign-up",
+        path: "/signup",
         element: <SignUp />,
       },
       {
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
         path: "/aboutus",
         element: <About></About>,
       },
+      {
+        path:"/requestseller",
+        element:<SellerRequest></SellerRequest>
+      }
     ],
   },
   {
