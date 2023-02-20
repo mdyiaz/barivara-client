@@ -23,17 +23,32 @@ const SignUp = () => {
       last_name,
       email,
       phone,
-      password,
-      confirm_password,
     };
 
     singUp(email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        // const user = userCredential.user;
 
-        toast.success("Successfully SingUp!");
-        from.reset();
+        // post backend start
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify("userInfo"),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              toast.success("Register Success");
+              from.reset();
+            }
+            console.log(data);
+          });
+
+        // post backend end
 
         // update User
         updateUser(fullName);
