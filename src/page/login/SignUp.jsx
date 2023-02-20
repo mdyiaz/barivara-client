@@ -45,7 +45,6 @@ const SignUp = () => {
               toast.success("Register Success");
               from.reset();
             }
-            console.log(data);
           });
 
         // post backend end
@@ -63,7 +62,6 @@ const SignUp = () => {
       });
   };
 
-  console.log(user);
   return (
     <div className="px-4" style={{ backgroundImage: `url(${bg_svg})` }}>
       <div
