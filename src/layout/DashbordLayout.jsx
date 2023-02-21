@@ -84,6 +84,9 @@ const DashbordLayout = () => {
             <li>
               <Link to="/dashbord/addhome">Add Home</Link>
             </li>
+            <li>
+              <Link to="/dashbord/allhome">All Home</Link>
+            </li>
           </ul>
         </div>
       </div>

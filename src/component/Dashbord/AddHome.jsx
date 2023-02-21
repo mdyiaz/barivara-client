@@ -68,7 +68,7 @@ const AddHome = () => {
   };
 
   const savDatabase = (allInfo, from) => {
-    fetch("http://localhost:5000/categories", {
+    fetch("http://localhost:5000/allbasa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

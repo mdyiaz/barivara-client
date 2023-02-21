@@ -1,6 +1,7 @@
 import About from "../component/About/About";
 import Contact from "../component/Contact/Contact";
 import AddHome from "../component/Dashbord/AddHome";
+import AllHome from "../component/Dashbord/AllHome";
 import Status from "../component/Dashbord/Status";
 import DashbordLayout from "../layout/DashbordLayout";
 import SignUp from "../page/login/SignUp";
@@ -36,9 +37,9 @@ const routes = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path:"/requestseller",
-        element:<SellerRequest></SellerRequest>
-      }
+        path: "/requestseller",
+        element: <SellerRequest></SellerRequest>,
+      },
     ],
   },
   {
@@ -52,6 +53,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashbord/addhome",
         element: <AddHome></AddHome>,
+      },
+      {
+        path: "/dashbord/allhome",
+        element: <AllHome />,
       },
     ],
   },
