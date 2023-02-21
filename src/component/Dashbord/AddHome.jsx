@@ -1,20 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import {} from "@tanstack/react-query";
 import React, { useState } from "react";
 
 const AddHome = () => {
-  // fetch the category
-
-  const { data: categorys = [] } = useQuery({
-    queryKey: ["categorys"],
-    queryFn: async () => {
-      const res = await fetch("category.json");
-      const data = await res.json();
-      return data;
-    },
-  });
-
-  console.log(categorys);
-
   //
   const [gas, setGas] = useState(false);
   const [watter, setWatter] = useState(false);
