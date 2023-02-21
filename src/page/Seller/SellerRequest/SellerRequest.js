@@ -132,7 +132,7 @@ const SellerRequest = () => {
 
           <div className="flex justify-center mt-5 pb-5">
             <button className="text-center w-full border border-primary hover:border-primary hover:bg-transparent hover:text-primary  px-10 bg-primary text-white transition-all py-2 text-xl font-medium rounded">
-              Submit
+              Submit Here
             </button>
           </div>
         </form>
