@@ -1,9 +1,57 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 
 const AddHome = () => {
+  // fetch the category
+
+  const { data: categorys = [] } = useQuery({
+    queryKey: ["categorys"],
+    queryFn: async () => {
+      const res = await fetch("category.json");
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  console.log(categorys);
+
+  //
+  const [gas, setGas] = useState(false);
+  const [watter, setWatter] = useState(false);
+  const [electricity, setElectricity] = useState(false);
+  const [Internet, setInternet] = useState(false);
+
   const addHomeHandler = (event) => {
     event.preventDefault();
     const from = event.target;
+    const title = from.title.value;
+    const price = from.price.value;
+    const location = from.location.value;
+    const number = from.number.value;
+    const category = from.category.value;
+    const bedRoom = from.bed.value;
+    const bathRoom = from.bath.value;
+    const sit = from.sit.value;
+    const duration = from.duration.value;
+    const description = from.description.value;
+
+    const allInfo = {
+      title,
+      price,
+      location,
+      number,
+      category,
+      bedRoom,
+      bathRoom,
+      description,
+      gas,
+      watter,
+      electricity,
+      Internet,
+      duration,
+      sit,
+    };
+    console.log(allInfo);
   };
   return (
     <div className="px-4">
@@ -59,7 +107,7 @@ const AddHome = () => {
             <input
               type="text"
               placeholder="Enter Your Number"
-              name="phoneNumber"
+              name="number"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
           </div>
@@ -80,7 +128,7 @@ const AddHome = () => {
                 Select Cetagory
               </label>
               <select
-                name="Cetagory"
+                name="category"
                 className="select w-full max-w-xs  select-bordered"
               >
                 <option value="Homer">Home</option>
@@ -93,7 +141,7 @@ const AddHome = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
             <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
-                BedRoom
+                Bed Room
               </label>
               <select
                 name="bed"
@@ -110,7 +158,7 @@ const AddHome = () => {
             </div>
             <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
-                BathRoom
+                Bath Room
               </label>
               <select
                 name="bath"
@@ -125,6 +173,36 @@ const AddHome = () => {
                 <option value={7}>7</option>
               </select>
             </div>
+            <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
+              <label htmlFor="email" className="text-xl font-medium">
+                Duration (Optional)
+              </label>
+              <select
+                name="duration"
+                className="select w-full max-w-xs  select-bordered"
+              >
+                <option value="">Nane</option>
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+              </select>
+            </div>
+            <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
+              <label htmlFor="email" className="text-xl font-medium">
+                Sit (Optional)
+              </label>
+              <select
+                name="sit"
+                className="select w-full max-w-xs  select-bordered"
+              >
+                <option value="">Nane</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </select>
+            </div>
           </div>
 
           {/* include service */}
@@ -134,13 +212,23 @@ const AddHome = () => {
               <label htmlFor="email" className="text-xl font-medium">
                 Gas
               </label>
-              <input name="gas" type="checkbox" className="checkbox" />
+              <input
+                onChange={(event) => setGas(event.target.checked)}
+                name="gas"
+                type="checkbox"
+                className="checkbox"
+              />
             </div>
             <div className=" rounded-lg flex items-center gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
                 Watter
               </label>
-              <input name="watter" type="checkbox" className="checkbox" />
+              <input
+                onChange={(event) => setWatter(event.target.checked)}
+                name="watter"
+                type="checkbox"
+                className="checkbox"
+              />
             </div>
           </div>
 
@@ -149,13 +237,23 @@ const AddHome = () => {
               <label htmlFor="email" className="text-xl font-medium">
                 Electricity
               </label>
-              <input name="electricity" type="checkbox" className="checkbox" />
+              <input
+                onChange={(event) => setElectricity(event.target.checked)}
+                name="electricity"
+                type="checkbox"
+                className="checkbox"
+              />
             </div>
             <div className=" rounded-lg flex items-center gap-2 mb-4  ">
               <label htmlFor="email" className="text-xl font-medium">
                 Internet
               </label>
-              <input name="internet" type="checkbox" className="checkbox" />
+              <input
+                onChange={(event) => setInternet(event.target.checked)}
+                name="internet"
+                type="checkbox"
+                className="checkbox"
+              />
             </div>
           </div>
 
