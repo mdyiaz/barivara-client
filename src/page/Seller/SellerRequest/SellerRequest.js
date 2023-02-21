@@ -2,46 +2,19 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const SellerRequest = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const imageHostKey1 = process.env.REACT_APP_imgbb_KEY1;
+  // const imageHostKey2 = process.env.REACT_APP_imgbb_KEY2;
 
-
-const {register , handleSubmit, formState: {errors}} = useForm(); 
-
-
-const imageHostKey1 = process.env.REACT_APP_imgbb_KEY1;
-// const imageHostKey2 = process.env.REACT_APP_imgbb_KEY2;
-
-
-const handleSellerRequest = data => {
-  console.log(data)
-  const image1 = data.photo[0];
-  // const image2 = data.nid_photo[0];
-  const formData = new FormData();
-  // const formData2 = new FormData();
-  formData.append('image1', image1);
-  // formData2.append('image2', image2);
-  const url1 = `https://api.imgbb.com/1/upload?key=${imageHostKey1}`
-  // const url2 = `https://api.imgbb.com/1/upload?key=${imageHostKey2}`
-  fetch(url1, {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.json())
-  .then(imgData1 => {
-    console.log(imgData1)
-  })
-
-
-
-
-
-
-
-
-
-}
-
-
+  const handleSellerRequest = (data) => {
+    const image = data.photo[0];
+    console.log(image);
+  };
 
   return (
     <div className="px-4">
@@ -58,15 +31,14 @@ const handleSellerRequest = data => {
                 First Name
               </label>
               <input
-
-                type="name" {...register ('f_name', {required:'Name is required'})}
-               
+                type="name"
+                {...register("f_name", { required: "Name is required" })}
                 placeholder="Enter Your First Name"
-                
-               
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black "
               />
-              {errors.f_name &&  <p className='text-red-500'>{errors.f_name?.message}</p>  }
+              {errors.f_name && (
+                <p className="text-red-500">{errors.f_name?.message}</p>
+              )}
             </div>
 
             <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
@@ -74,12 +46,14 @@ const handleSellerRequest = data => {
                 Last name
               </label>
               <input
-                type="name" {...register ('l_name', {required:'Name is required'})}
+                type="name"
+                {...register("l_name", { required: "Name is required" })}
                 placeholder="Enter Your Last Name"
-                
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
-              {errors.l_name &&  <p className='text-red-500'>{errors.l_name?.message}</p>  }
+              {errors.l_name && (
+                <p className="text-red-500">{errors.l_name?.message}</p>
+              )}
             </div>
           </div>
 
@@ -88,12 +62,14 @@ const handleSellerRequest = data => {
               Location
             </label>
             <input
-              type="text" {...register ('location', {required:'Location is required'})}
+              type="text"
+              {...register("location", { required: "Location is required" })}
               placeholder="Enter Your Location"
-              
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
-            {errors.location &&  <p className='text-red-500'>{errors.location?.message}</p>  }
+            {errors.location && (
+              <p className="text-red-500">{errors.location?.message}</p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
@@ -102,12 +78,16 @@ const handleSellerRequest = data => {
                 Phone Number
               </label>
               <input
-                type="number" {...register ('p_number', {required:'Phone Number is required'})}
+                type="number"
+                {...register("p_number", {
+                  required: "Phone Number is required",
+                })}
                 placeholder="Enter Your Phone Number"
-               
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
-              {errors.p_number &&  <p className='text-red-500'>{errors.p_number?.message}</p>  }
+              {errors.p_number && (
+                <p className="text-red-500">{errors.p_number?.message}</p>
+              )}
             </div>
 
             <div>
@@ -116,12 +96,14 @@ const handleSellerRequest = data => {
                   Upload Your Photo
                 </label>
                 <input
-                  type="file" {...register ('photo', {required:'Photo is required'})}
+                  type="file"
+                  {...register("photo", { required: "Photo is required" })}
                   placeholder=""
-                  
                   className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                 />
-                {errors.photo &&  <p className='text-red-500'>{errors.photo?.message}</p>  }
+                {errors.photo && (
+                  <p className="text-red-500">{errors.photo?.message}</p>
+                )}
               </div>
             </div>
           </div>
@@ -132,24 +114,29 @@ const handleSellerRequest = data => {
                 NID Card Photo
               </label>
               <input
-                type="file" {...register ('nid_photo')}
-                placeholder="Enter Your Password"
-                
+                type="file"
+                {...register("nid_photo")}
                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
               />
-              {errors.nid_photo &&  <p className='text-red-500'>{errors.nid_photo?.message}</p>  }
+              {errors.nid_photo && (
+                <p className="text-red-500">{errors.nid_photo?.message}</p>
+              )}
             </div>
             <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="nid_number" className="text-xl font-medium">
                 NID Number
               </label>
               <input
-                type="number" {...register ('nid_number', {required:'NID Card is required'})}
+                type="number"
+                {...register("nid_number", {
+                  required: "NID Card is required",
+                })}
                 placeholder="Enter Your NID Number"
-                
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
-              {errors.nid_number &&  <p className='text-red-500'>{errors.nid_number?.message}</p>  }
+              {errors.nid_number && (
+                <p className="text-red-500">{errors.nid_number?.message}</p>
+              )}
             </div>
           </div>
 
@@ -158,16 +145,18 @@ const handleSellerRequest = data => {
               Write Something About You_
             </label>
             <textarea
-              type="text" {...register ('about')}
+              type="text"
+              {...register("about")}
               placeholder="Enter Your description  "
-             
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
-            
           </div>
 
           <div className="flex justify-center mt-5 pb-5">
-            <button className="text-center w-full border border-primary hover:border-primary hover:bg-transparent hover:text-primary  px-10 bg-primary text-white transition-all py-2 text-xl font-medium rounded" type="submit">
+            <button
+              className="text-center w-full border border-primary hover:border-primary hover:bg-transparent hover:text-primary  px-10 bg-primary text-white transition-all py-2 text-xl font-medium rounded"
+              type="submit"
+            >
               Submit
             </button>
           </div>
