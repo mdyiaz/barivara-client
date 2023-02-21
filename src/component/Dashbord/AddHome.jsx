@@ -1,7 +1,14 @@
-import {} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddHome = () => {
+  const { data: categorys = [] } = useQuery({
+    queryKey: ["categorys"],
+    queryFn: () =>
+      fetch("http://localhost:5000/categories").then((res) => res.json()),
+  });
+
   //
   const [gas, setGas] = useState(false);
   const [watter, setWatter] = useState(false);
@@ -21,24 +28,62 @@ const AddHome = () => {
     const sit = from.sit.value;
     const duration = from.duration.value;
     const description = from.description.value;
+    const image = from.photo.files[0];
 
-    const allInfo = {
-      title,
-      price,
-      location,
-      number,
-      category,
-      bedRoom,
-      bathRoom,
-      description,
-      gas,
-      watter,
-      electricity,
-      Internet,
-      duration,
-      sit,
-    };
-    console.log(allInfo);
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const url =
+      "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        const photo = imageData.data.url;
+        const allInfo = {
+          title,
+          price,
+          location,
+          number,
+          category,
+          bedRoom,
+          bathRoom,
+          description,
+          gas,
+          watter,
+          electricity,
+          Internet,
+          duration,
+          sit,
+          photo,
+        };
+
+        // console.log(imageData.data.url);
+        savDatabase(allInfo, from);
+      });
+
+    // console.log(allInfo);
+  };
+
+  const savDatabase = (allInfo, from) => {
+    fetch("http://localhost:5000/categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(allInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Successfully toasted!");
+          from.reset();
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="px-4">
@@ -56,6 +101,7 @@ const AddHome = () => {
               </label>
               <input
                 type="text"
+                required
                 placeholder="Enter Your Home Title"
                 name="title"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black "
@@ -68,6 +114,7 @@ const AddHome = () => {
               </label>
               <input
                 type="number"
+                required
                 placeholder="Enter Home Price"
                 name="price"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
@@ -81,6 +128,7 @@ const AddHome = () => {
             </label>
             <input
               type="text"
+              required
               placeholder="Enter Your Location"
               name="location"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
@@ -93,6 +141,7 @@ const AddHome = () => {
             </label>
             <input
               type="text"
+              required
               placeholder="Enter Your Number"
               name="number"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
@@ -105,6 +154,7 @@ const AddHome = () => {
               </label>
               <input
                 type="file"
+                required
                 placeholder="Enter Your Password"
                 name="photo"
                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
@@ -115,12 +165,19 @@ const AddHome = () => {
                 Select Cetagory
               </label>
               <select
+                required
                 name="category"
                 className="select w-full max-w-xs  select-bordered"
               >
-                <option value="Homer">Home</option>
-                <option value="helo">helo</option>
-                <option value="masud">masud</option>
+                <option disabled selected>
+                  Select category
+                </option>
+                {categorys.map((category) => (
+                  <option key={category._id} value={category?.category}>
+                    {category?.category}
+                  </option>
+                ))}
+                {/* <option value="Homer">Home</option> */}
               </select>
             </div>
           </div>
@@ -131,6 +188,7 @@ const AddHome = () => {
                 Bed Room
               </label>
               <select
+                required
                 name="bed"
                 className="select w-full max-w-xs  select-bordered"
               >
@@ -148,6 +206,7 @@ const AddHome = () => {
                 Bath Room
               </label>
               <select
+                required
                 name="bath"
                 className="select w-full max-w-xs  select-bordered"
               >
@@ -252,6 +311,7 @@ const AddHome = () => {
             </label>
             <textarea
               type="text"
+              required
               placeholder="Enter Your Home description  "
               name="description"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
