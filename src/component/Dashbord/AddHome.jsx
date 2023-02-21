@@ -3,7 +3,7 @@ import React from "react";
 const AddHome = () => {
   const addHomeHandler = (event) => {
     event.preventDefault();
-    console.log("object");
+    const from = event.target;
   };
   return (
     <div className="px-4">
