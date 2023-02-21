@@ -9,6 +9,8 @@ import {
 } from "react-icons/gi";
 
 const OurCategory = () => {
+
+  
   const { data: categorys = [] } = useQuery({
     queryKey: ["categorys"],
     queryFn: async () => {
