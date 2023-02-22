@@ -44,8 +44,8 @@ const routes = createBrowserRouter([
       {
         path: "/homes/:category",
         element: <SingleCategories></SingleCategories>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/homes/${params.category}`),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/homes/${params.category}`),
       },
     ],
   },
