@@ -42,10 +42,11 @@ const routes = createBrowserRouter([
         element: <SellerRequest></SellerRequest>,
       },
       {
-        path:"/homes/:id",
-        element:<SingleCategories></SingleCategories>,
-        loader: (params) => fetch(`http://localhost:5000/homes/${params.id}`),
-      }
+        path: "/homes/:category",
+        element: <SingleCategories></SingleCategories>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/homes/${params.category}`),
+      },
     ],
   },
   {

@@ -4,7 +4,7 @@ const HomeCard = () => {
   return (
     <div className="container mx-auto ">
       <h2 className="text-4xl text-primary text-center font-semibold">
-        Rooms & Apartments
+        Expencive Home
       </h2>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">

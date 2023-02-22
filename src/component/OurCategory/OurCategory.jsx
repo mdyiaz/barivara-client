@@ -10,8 +10,6 @@ import {
 } from "react-icons/gi";
 
 const OurCategory = () => {
-
-  
   const { data: categorys = [] } = useQuery({
     queryKey: ["categorys"],
     queryFn: async () => {
@@ -35,7 +33,11 @@ const OurCategory = () => {
         <div className="grid col-span-2">
           <div className="grid grid-cols-3 gap-8 ">
             {categorys.map((category) => (
-              <Link to={`homes/${category.category}`} key={category._id} className="flex flex-col items-center">
+              <Link
+                to={`/homes/${category.category}`}
+                key={category._id}
+                className="flex flex-col items-center"
+              >
                 <img src={category.picture} alt="" className="w-[70px]" />
                 <p className="mt-3 text-base font-bold text-gray-700 hover:text-teal-600">
                   {category.category}

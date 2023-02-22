@@ -1,26 +1,30 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const SingleCategories = () => {
+  const basas = useLoaderData();
+  console.log(basas);
 
-    const data = useLoaderData();
-    console.log(data);
+  return (
+    <div className="container mx-auto">
+      <div className="grid lg:grid-cols-3 gap-3 md:grid-cols-2 grid-cols-1 mt-10">
+        {basas.map((basa) => (
+          <div className=" rounded-lg relative homeCard">
+            <img className="w-full rounded-lg" src={basa?.photo} alt="" />
 
-    const {data: allCategory , isLoading } = useQuery({
-        queryKey: ["allCategory"],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allbasa`);
-            const data = await res.json();
-            return data;
-        }
-    });
-
-    return (
-        <div>
-            <h1>single Categories</h1>
-        </div>
-    );
+            <div className="homeCardDtls absolute w-full  text-white p-2 bg-gradient-to-r from-primary to-secondary">
+              <h2 className="text-xl">{basa?.title}</h2>
+              <div className="flex justify-between">
+                <p>Price: {basa?.price}</p>
+                <p>Location: {basa?.location}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default SingleCategories;
