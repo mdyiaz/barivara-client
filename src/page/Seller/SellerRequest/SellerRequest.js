@@ -1,6 +1,29 @@
 import React from "react";
 
 const SellerRequest = () => {
+  const requestHandler = (event) => {
+    event.preventDefault();
+
+    const from = event.target;
+    const name = from.name.value;
+    const location = from.location.value;
+    const phone = from.phone.value;
+    const nid = from.nid.value;
+    const about = from.about.value;
+    const sellerPhoto = from.sellerPhoto.files[0];
+    const nidPhoto = from.nidPhoto.value;
+    console.log(sellerPhoto);
+
+    const sellerInfo = {
+      name,
+      location,
+      phone,
+      nid,
+      about,
+    };
+
+    // image uploade imagebb
+  };
   return (
     <div className="px-4">
       <div
@@ -9,7 +32,7 @@ const SellerRequest = () => {
         <h1 className="  mb-4 text-3xl text-primary font-semibold">
           Request For Seller Account
         </h1>
-        <form>
+        <form onSubmit={requestHandler}>
           <div className="grid grid-cols-1 md:grid-cols-1 md:gap-5">
             <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="f_name" className="text-xl font-medium">
@@ -17,6 +40,7 @@ const SellerRequest = () => {
               </label>
               <input
                 type="name"
+                name="name"
                 placeholder="Enter Your Full Name"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black "
               />
@@ -29,6 +53,7 @@ const SellerRequest = () => {
             </label>
             <input
               type="text"
+              name="location"
               placeholder="Enter Your Location"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
@@ -41,6 +66,7 @@ const SellerRequest = () => {
               </label>
               <input
                 type="number"
+                name="phone"
                 placeholder="Enter Your Phone Number"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
@@ -53,6 +79,7 @@ const SellerRequest = () => {
                 </label>
                 <input
                   type="file"
+                  name="sellerPhoto"
                   placeholder=""
                   className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                 />
@@ -67,6 +94,7 @@ const SellerRequest = () => {
               </label>
               <input
                 type="file"
+                name="nidPhoto"
                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
               />
             </div>
@@ -76,6 +104,7 @@ const SellerRequest = () => {
               </label>
               <input
                 type="number"
+                name="nid"
                 placeholder="Enter Your NID Number"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
@@ -88,6 +117,7 @@ const SellerRequest = () => {
             </label>
             <textarea
               type="text"
+              name="about"
               placeholder="Enter Your description  "
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
