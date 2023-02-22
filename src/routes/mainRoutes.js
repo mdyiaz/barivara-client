@@ -3,6 +3,7 @@ import Contact from "../component/Contact/Contact";
 import AddHome from "../component/Dashbord/AddHome";
 import AllHome from "../component/Dashbord/AllHome";
 import Status from "../component/Dashbord/Status";
+import SingleCategories from "../component/OurCategory/SingleCategories/SingleCategories";
 import DashbordLayout from "../layout/DashbordLayout";
 import SignUp from "../page/login/SignUp";
 import SellerRequest from "../page/Seller/SellerRequest/SellerRequest";
@@ -40,6 +41,11 @@ const routes = createBrowserRouter([
         path: "/requestseller",
         element: <SellerRequest></SellerRequest>,
       },
+      {
+        path:"/homes/:id",
+        element:<SingleCategories></SingleCategories>,
+        loader: (params) => fetch(`http://localhost:5000/homes/${params.id}`),
+      }
     ],
   },
   {

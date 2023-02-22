@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
 import { BiBuildingHouse } from "react-icons/bi";
 import {
   GiFamilyHouse,
@@ -14,7 +15,7 @@ const OurCategory = () => {
   const { data: categorys = [] } = useQuery({
     queryKey: ["categorys"],
     queryFn: async () => {
-      const res = await fetch("category.json");
+      const res = await fetch("http://localhost:5000/categories");
       const data = await res.json();
       return data;
     },
@@ -34,12 +35,12 @@ const OurCategory = () => {
         <div className="grid col-span-2">
           <div className="grid grid-cols-3 gap-8 ">
             {categorys.map((category) => (
-              <div key={category._id} className="flex flex-col items-center">
+              <Link to={`homes/${category.category}`} key={category._id} className="flex flex-col items-center">
                 <img src={category.picture} alt="" className="w-[70px]" />
                 <p className="mt-3 text-base font-bold text-gray-700 hover:text-teal-600">
                   {category.category}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
