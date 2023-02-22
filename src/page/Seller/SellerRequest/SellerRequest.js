@@ -1,21 +1,6 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 
 const SellerRequest = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const imageHostKey1 = process.env.REACT_APP_imgbb_KEY1;
-  // const imageHostKey2 = process.env.REACT_APP_imgbb_KEY2;
-
-  const handleSellerRequest = (data) => {
-    const image = data.photo[0];
-    console.log(image);
-  };
-
   return (
     <div className="px-4">
       <div
@@ -24,36 +9,17 @@ const SellerRequest = () => {
         <h1 className="  mb-4 text-3xl text-primary font-semibold">
           Request For Seller Account
         </h1>
-        <form onSubmit={handleSubmit(handleSellerRequest)}>
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+        <form>
+          <div className="grid grid-cols-1 md:grid-cols-1 md:gap-5">
             <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="f_name" className="text-xl font-medium">
-                First Name
+                Full Name
               </label>
               <input
                 type="name"
-                {...register("f_name", { required: "Name is required" })}
-                placeholder="Enter Your First Name"
+                placeholder="Enter Your Full Name"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black "
               />
-              {errors.f_name && (
-                <p className="text-red-500">{errors.f_name?.message}</p>
-              )}
-            </div>
-
-            <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
-              <label htmlFor="l_name" className="text-xl font-medium">
-                Last name
-              </label>
-              <input
-                type="name"
-                {...register("l_name", { required: "Name is required" })}
-                placeholder="Enter Your Last Name"
-                className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
-              />
-              {errors.l_name && (
-                <p className="text-red-500">{errors.l_name?.message}</p>
-              )}
             </div>
           </div>
 
@@ -63,13 +29,9 @@ const SellerRequest = () => {
             </label>
             <input
               type="text"
-              {...register("location", { required: "Location is required" })}
               placeholder="Enter Your Location"
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
-            {errors.location && (
-              <p className="text-red-500">{errors.location?.message}</p>
-            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5">
@@ -79,15 +41,9 @@ const SellerRequest = () => {
               </label>
               <input
                 type="number"
-                {...register("p_number", {
-                  required: "Phone Number is required",
-                })}
                 placeholder="Enter Your Phone Number"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
-              {errors.p_number && (
-                <p className="text-red-500">{errors.p_number?.message}</p>
-              )}
             </div>
 
             <div>
@@ -97,13 +53,9 @@ const SellerRequest = () => {
                 </label>
                 <input
                   type="file"
-                  {...register("photo", { required: "Photo is required" })}
                   placeholder=""
                   className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                 />
-                {errors.photo && (
-                  <p className="text-red-500">{errors.photo?.message}</p>
-                )}
               </div>
             </div>
           </div>
@@ -115,12 +67,8 @@ const SellerRequest = () => {
               </label>
               <input
                 type="file"
-                {...register("nid_photo")}
                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
               />
-              {errors.nid_photo && (
-                <p className="text-red-500">{errors.nid_photo?.message}</p>
-              )}
             </div>
             <div className=" form-control rounded-lg flex flex-col gap-2 mb-4  ">
               <label htmlFor="nid_number" className="text-xl font-medium">
@@ -128,15 +76,9 @@ const SellerRequest = () => {
               </label>
               <input
                 type="number"
-                {...register("nid_number", {
-                  required: "NID Card is required",
-                })}
                 placeholder="Enter Your NID Number"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
               />
-              {errors.nid_number && (
-                <p className="text-red-500">{errors.nid_number?.message}</p>
-              )}
             </div>
           </div>
 
@@ -146,7 +88,6 @@ const SellerRequest = () => {
             </label>
             <textarea
               type="text"
-              {...register("about")}
               placeholder="Enter Your description  "
               className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
             />
