@@ -12,7 +12,23 @@ const SellerRequest = () => {
     const about = from.about.value;
     const sellerPhoto = from.sellerPhoto.files[0];
     const nidPhoto = from.nidPhoto.value;
-    console.log(sellerPhoto);
+    // console.log(sellerPhoto);
+
+    const formData1 = new FormData();
+    formData1.append("image", sellerPhoto);
+
+    const url =
+      "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
+    fetch(url, {
+      method: "POST",
+      body: formData1,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        const photo = imageData.data.url;
+        //  upload photo 2
+        console.log(photo);
+      });
 
     const sellerInfo = {
       name,
@@ -24,6 +40,24 @@ const SellerRequest = () => {
 
     // image uploade imagebb
   };
+
+  // const imageUpload = (sellerPhoto) => {
+  //   const formData = new FormData();
+  //   formData.append("image", sellerPhoto);
+
+  //   const url =
+  //     "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((imageData) => {
+  //       const photo = imageData.data.url;
+  //       //  upload photo 2
+  //       console.log(photo);
+  //     });
+  // };
   return (
     <div className="px-4">
       <div
