@@ -3,9 +3,11 @@ import React from "react";
 const HomeCard = () => {
   return (
     <div className="container mx-auto ">
-      <h2 className="text-4xl text-primary text-center font-semibold">
+      <h2 className="text-6xl text-primary text-center font-semibold">
         Expencive Home
       </h2>
+
+      <p className="text-lg text-primary text-center font-semibold mt-5 mb-5">FIND YOUR HOMES, FOR YOUR AVAILABILITY</p>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">
         <div className=" rounded-lg relative homeCard">

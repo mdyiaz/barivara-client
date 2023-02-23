@@ -38,9 +38,9 @@ const DashbordLayout = () => {
           </label>
           <Link
             to="/"
-            className="lg:block hidden btn btn-ghost normal-case text-xl"
+            className="lg:block hidden btn btn-warning btn-sm normal-case text-2xl"
           >
-            daisyUI
+            বাড়িভাড়া
           </Link>
         </div>
         <div className="flex-none">
