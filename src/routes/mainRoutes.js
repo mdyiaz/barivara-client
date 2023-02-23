@@ -49,11 +49,11 @@ const routes = createBrowserRouter([
         //   fetch(`http://localhost:5000/homes/${params.category}`),
       },
       {
-        path:"/homedetails/:id",
-        element:<EachHomeDetails></EachHomeDetails>,
-        //  loader: ({ params }) =>
-        //  fetch(`http://localhost:5000/homedetails/${params.id}`),
-      }
+        path: "/homedetails/:id",
+        element: <EachHomeDetails></EachHomeDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
+      },
     ],
   },
   {
