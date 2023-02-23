@@ -59,8 +59,8 @@ function Nav() {
               {menuItem}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl text-white">
-            Baribhara
+          <Link to="/" className="btn btn-ghost normal-case text-2xl text-white">
+          বাড়িভাড়া
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -79,7 +79,7 @@ function Nav() {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link className="btn-sm" onClick={handleLogOut}>
+                  <Link className="btn-sm btn-primary" onClick={handleLogOut}>
                     Log Out
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ function Nav() {
             </>
           ) : (
             <li>
-              <Link className="btn text-white" to="/login">
+              <Link className="btn btn-sm btn-primary text-white" to="/login">
                 Login
               </Link>
             </li>

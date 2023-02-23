@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const SingleCategories = () => {
   // const basas = useLoaderData();
@@ -28,11 +28,18 @@ const SingleCategories = () => {
             <img className="w-full rounded-lg" src={category?.photo} alt="" />
 
             <div className="homeCardDtls absolute w-full  text-white p-2 bg-gradient-to-r from-primary to-secondary">
+
+              <div className="flex justify-between">
               <h2 className="text-xl">{category?.title}</h2>
+              <Link to="" ><button className="btn btn-warning btn-sm text-white" type="">View Details</button></Link>
+
+              </div>
+              
               <div className="flex justify-between">
                 <p>Price: {category?.price}</p>
                 <p>Location: {category?.location}</p>
               </div>
+              
             </div>
           </div>
         ))}

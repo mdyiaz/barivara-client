@@ -3,6 +3,7 @@ import Contact from "../component/Contact/Contact";
 import AddHome from "../component/Dashbord/AddHome";
 import AllHome from "../component/Dashbord/AllHome";
 import Status from "../component/Dashbord/Status";
+import EachHomeDetails from "../component/OurCategory/SingleCategories/EachHomeDetails";
 import SingleCategories from "../component/OurCategory/SingleCategories/SingleCategories";
 import DashbordLayout from "../layout/DashbordLayout";
 import SignUp from "../page/login/SignUp";
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
         // loader: ({ params }) =>
         //   fetch(`http://localhost:5000/homes/${params.category}`),
       },
+      {
+        path:"/eachhomedetails",
+        element:<EachHomeDetails></EachHomeDetails>
+      }
     ],
   },
   {
