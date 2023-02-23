@@ -20,7 +20,8 @@ const OurCategory = () => {
   });
 
   return (
-    <div className="mt-20 mb-20">
+    <div className="container mx-auto">
+      <div className="mt-20 mb-20">
       <div className="grid lg:grid-cols-3 sm:grid-cols-1">
         <div className="flex justify-center items-center">
           <h1 className="text-7xl font-extrabold text-teal-600 mb-10 lg:block hidden">
@@ -47,6 +48,7 @@ const OurCategory = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
