@@ -1,13 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+
 import React from "react";
 
 const AllHome = () => {
-  const { data: homes = [] } = useQuery({
+  const { data: homes = [], refetch } = useQuery({
     queryKey: ["homes"],
     queryFn: () =>
       fetch("http://localhost:5000/allbasa").then((res) => res.json()),
   });
-  console.log(homes);
+  // console.log(homes);
+
+  const deleteHandler = (basa) => {
+    const agree = window.confirm(`Are you sure  delete ${basa.title}`);
+
+    if (agree) {
+      fetch(`http://localhost:5000/delete/${basa?._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            //
+            //
+            toast.success("Successfully Delete");
+            refetch();
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -56,7 +78,12 @@ const AllHome = () => {
                 </td>
                 <td>{home?.price}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">Delete</button>
+                  <button
+                    onClick={() => deleteHandler(home)}
+                    className="btn btn-ghost btn-xs"
+                  >
+                    Delete
+                  </button>
                 </th>
               </tr>
             ))}
