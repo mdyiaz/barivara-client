@@ -9,11 +9,21 @@ const AddHome = () => {
       fetch("http://localhost:5000/categories").then((res) => res.json()),
   });
 
+  // location fetch
+  const { data: locations = [] } = useQuery({
+    queryKey: ["locations"],
+    queryFn: () =>
+      fetch("http://localhost:5000/locations").then((res) => res.json()),
+  });
+
+  console.log(locations);
+
   //
   const [gas, setGas] = useState(false);
   const [watter, setWatter] = useState(false);
   const [electricity, setElectricity] = useState(false);
   const [Internet, setInternet] = useState(false);
+  const [expancive, setExpancive] = useState(false);
 
   const addHomeHandler = (event) => {
     event.preventDefault();
@@ -58,13 +68,12 @@ const AddHome = () => {
           duration,
           sit,
           photo,
+          expancive,
         };
 
-        // console.log(imageData.data.url);
-        savDatabase(allInfo, from);
+        console.log(allInfo);
+        // savDatabase(allInfo, from);
       });
-
-    // console.log(allInfo);
   };
 
   const savDatabase = (allInfo, from) => {
@@ -126,13 +135,20 @@ const AddHome = () => {
             <label htmlFor="email" className="text-xl font-medium">
               Location
             </label>
-            <input
-              type="text"
+            <select
               required
-              placeholder="Enter Your Location"
               name="location"
-              className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black"
-            />
+              className="select w-full max-w-xs  select-bordered"
+            >
+              <option disabled selected>
+                Select Location
+              </option>
+              {locations?.map((location) => (
+                <option key={location?._id} value={location?.location}>
+                  {location?.location}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className=" rounded-lg flex flex-col gap-2 mb-4  ">
@@ -297,6 +313,18 @@ const AddHome = () => {
               <input
                 onChange={(event) => setInternet(event.target.checked)}
                 name="internet"
+                type="checkbox"
+                className="checkbox"
+              />
+            </div>
+
+            <div className=" rounded-lg flex items-center gap-2 mb-4  ">
+              <label htmlFor="email" className="text-xl font-medium">
+                this Home Is Expancive?
+              </label>
+              <input
+                onChange={(event) => setExpancive(event.target.checked)}
+                name="expancive"
                 type="checkbox"
                 className="checkbox"
               />
