@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SellerRequest = () => {
+  const [seller_Photo, setSellerPhoto] = useState("");
+  const [nid_Photo, setnidPhoto] = useState("");
   const requestHandler = (event) => {
     event.preventDefault();
 
@@ -11,9 +13,9 @@ const SellerRequest = () => {
     const nid = from.nid.value;
     const about = from.about.value;
     const sellerPhoto = from.sellerPhoto.files[0];
-    const nidPhoto = from.nidPhoto.value;
+    const nidPhoto = from.nidPhoto.files[0];
+    // console.log(nidPhoto);
     // console.log(sellerPhoto);
-
     const formData1 = new FormData();
     formData1.append("image", sellerPhoto);
 
@@ -27,8 +29,27 @@ const SellerRequest = () => {
       .then((imageData) => {
         const photo = imageData.data.url;
         //  upload photo 2
-        console.log(photo);
+        // console.log(photo);
+        setSellerPhoto(photo);
       });
+
+    //
+    const formData2 = new FormData();
+    formData2.append("image", nidPhoto);
+
+    fetch(url, {
+      method: "POST",
+      body: formData2,
+    })
+      .then((res) => res.json())
+      .then((imageData2) => {
+        const photo = imageData2.data.url;
+        //  upload photo 2
+        // console.log(photo);
+        setnidPhoto(photo);
+      });
+
+    //
 
     const sellerInfo = {
       name,
@@ -36,28 +57,31 @@ const SellerRequest = () => {
       phone,
       nid,
       about,
+      seller_Photo,
+      nid_Photo,
     };
+    console.log(sellerInfo);
 
     // image uploade imagebb
   };
 
-  const imageUpload = (sellerPhoto) => {
-    const formData = new FormData();
-    formData.append("image", sellerPhoto);
+  // const imageUpload = (sellerPhoto) => {
+  //   const formData = new FormData();
+  //   formData.append("image", sellerPhoto);
 
-    const url =
-      "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imageData) => {
-        const photo = imageData.data.url;
-        //  upload photo 2
-        console.log(photo);
-      });
-  };
+  //   const url =
+  //     "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((imageData) => {
+  //       const photo = imageData.data.url;
+  //       //  upload photo 2
+  //       // console.log(photo);
+  //     });
+  // };
   return (
     <div className="px-4">
       <div
