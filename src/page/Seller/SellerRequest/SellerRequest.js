@@ -41,23 +41,23 @@ const SellerRequest = () => {
     // image uploade imagebb
   };
 
-  // const imageUpload = (sellerPhoto) => {
-  //   const formData = new FormData();
-  //   formData.append("image", sellerPhoto);
+  const imageUpload = (sellerPhoto) => {
+    const formData = new FormData();
+    formData.append("image", sellerPhoto);
 
-  //   const url =
-  //     "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
-  //   fetch(url, {
-  //     method: "POST",
-  //     body: formData,
-  //   })
-  //     .then((res) => res.json())
-  //     .then((imageData) => {
-  //       const photo = imageData.data.url;
-  //       //  upload photo 2
-  //       console.log(photo);
-  //     });
-  // };
+    const url =
+      "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        const photo = imageData.data.url;
+        //  upload photo 2
+        console.log(photo);
+      });
+  };
   return (
     <div className="px-4">
       <div
