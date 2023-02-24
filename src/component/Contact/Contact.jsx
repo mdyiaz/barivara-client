@@ -38,7 +38,7 @@ const Contact = () => {
         live
       </h1>
 
-      <div className="grid lg:grid-cols-2 sm:grid-cols-1 mt-20 gap-10">
+      <div className="grid lg:grid-cols-2 sm:grid-cols-1 mt-20 gap-10 justify-items-center">
         <div>
           <div className="flex gap-2">
             <FaAddressCard size={30} className="text-sky-900" />
@@ -89,23 +89,23 @@ const Contact = () => {
                 type="text"
                 name="name"
                 placeholder="Enter Your Name"
-                className="input input-bordered input-warning w-full  mb-5 text-black"
+                className="input input-bordered input-warning w-3/4  mb-5 text-black"
               />
               <input
                 type="text"
                 name="email"
                 placeholder="Enter Your Email"
-                className="input input-bordered input-warning w-full mb-5 text-black"
+                className="input input-bordered input-warning w-3/4 mb-5 text-black"
               />
               <input
                 type="text"
                 name="subject"
                 placeholder="Enter Your Subject"
-                className="input input-bordered input-warning w-full  mb-5 text-black"
+                className="input input-bordered input-warning w-3/4  mb-5 text-black"
               />{" "}
               <br />
               <textarea
-                className="textarea textarea-warning w-full h-40 text-black mb-5"
+                className="textarea textarea-warning w-3/4 h-40 text-black mb-5"
                 name="message"
                 placeholder="Enter Your Message"
               ></textarea>{" "}

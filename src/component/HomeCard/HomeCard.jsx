@@ -11,7 +11,7 @@ const HomeCard = () => {
   return (
     <div className="container mx-auto ">
       <h2 className="text-6xl text-primary text-center font-semibold">
-        Expencive Home
+        Expensive Home
       </h2>
 
       <p className="text-lg text-primary text-center font-semibold mt-5 mb-5">

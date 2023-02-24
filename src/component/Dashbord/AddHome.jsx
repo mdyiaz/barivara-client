@@ -72,7 +72,7 @@ const AddHome = () => {
         };
 
         console.log(allInfo);
-        // savDatabase(allInfo, from);
+        savDatabase(allInfo, from);
       });
   };
 
@@ -335,7 +335,7 @@ const AddHome = () => {
 
           <div className=" rounded-lg flex flex-col gap-2 mb-4 mt-3 ">
             <label htmlFor="email" className="text-xl font-medium">
-              description
+              Description (minimum 20 words)
             </label>
             <textarea
               type="text"
