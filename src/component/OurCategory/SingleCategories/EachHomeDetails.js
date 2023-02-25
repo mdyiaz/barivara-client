@@ -29,8 +29,8 @@ const EachHomeDetails = () => {
     const handleForm = data => {
         console.log("form", data);
         const booking ={
-            customerName:data.name,
-            customerEmail:data.email,
+            customerName:name,
+            customerEmail:email,
             customerPhone:data.phone,
             customerTransactionId:data.transaction,
             customerPaymentNumber:data.paymentNumber,

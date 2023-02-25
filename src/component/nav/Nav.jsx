@@ -28,6 +28,12 @@ function Nav() {
       <li className="text-white font-bold">
         <Link to="/aboutus">About Us</Link>
       </li>
+
+
+      <li className="text-white font-bold">
+        <Link to="/dashbord">DashBoard</Link>
+      </li>
+
     </>
   );
 
@@ -85,7 +91,11 @@ function Nav() {
                 </li>
               </ul>
             </>
-          ) : (
+          ) 
+          
+          : 
+          
+          (
             <li>
               <Link className="btn btn-sm btn-primary text-white" to="/login">
                 Login
