@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import {ImPriceTags} from 'react-icons/im'
@@ -22,7 +21,7 @@ const EachHomeDetails = () => {
         <div className="text-center bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 py-14">
             <h2 className="text-4xl font-bold text-white">{details.title}</h2>
             <h3 className="text-lg text-black font-bold">Details about this Home</h3>
-      </div>
+        </div>
 
 
 
@@ -46,27 +45,47 @@ const EachHomeDetails = () => {
                                 Price: {details.price} /= 
                     </button>
 
-                    <div className='grid grid-cols-2 mt-8'>
+                    <div className=''>
                         <div className='text-lg'>
-                            <p className='font-bold'>Address & Area</p>
-                            <p>BedRooms</p>
-                            <p>BathRooms</p>
-                        </div>
-
-                        <div className='text-lg'>
-                            <p className='font-bold'>{details.location}</p>
-                            <p>{details.bedRoom}</p>
-                            <p>{details.bathRoom}</p>
+                            <p className='font-bold'>Address & Area: {details.location}</p>
+                            <p>BedRooms: {details.bedRoom}</p>
+                            <p>BathRooms: {details.bathRoom}</p>
                         </div>
                     </div>
 
 
                     <div className='pt-5 text-lg'>
                         <h2 className=' font-bold'>Indoor Features</h2>
-                        <p>---{details.gas}</p>
-                        <p>---{details.watter}</p>
-                        <p>---{details.electricity}</p>
-                        <p>---{details.Internet}</p>
+
+                        <p>Gas: {
+                            details?.gas && <span>
+                                Yes
+                            </span>
+                        }</p>
+
+
+                        <p>Water: {
+                            details?.watter && <span>
+                                Yes
+                            </span>
+                        }</p>
+
+
+                        <p>Electricity: {
+                            details?.electricity && <span>
+                                Yes
+                            </span>
+                        }</p>
+
+                        <p>Internet: {
+                            details?.Internet && <span>
+                                Yes
+                            </span>
+                        }</p>
+                        
+
+
+                        
                     </div>
                 </div>
             </div>
@@ -84,6 +103,17 @@ const EachHomeDetails = () => {
                              <input type="text"  className="input input-bordered w-full "  />
                     </div>
 
+                   
+
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                             <input type="Email" className="input input-bordered w-full " />
+                    </div>
+
+
+
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text">Phone Number</span>
@@ -95,16 +125,19 @@ const EachHomeDetails = () => {
 
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Transaction ID</span>
                         </label>
-                             <input type="Email" className="input input-bordered w-full " />
+                             <input type="text" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
+                            {errors.name && <p className='text-red-500' role="alert"> {errors.name?.message}</p>}
+ 
                     </div>
+
 
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Payment Number</span>
                         </label>
-                             <input type="text" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
+                             <input type="number" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
                             {errors.name && <p className='text-red-500' role="alert"> {errors.name?.message}</p>}
  
                     </div>
