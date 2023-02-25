@@ -3,7 +3,9 @@ import Contact from "../component/Contact/Contact";
 import AddHome from "../component/Dashbord/AddHome";
 import AllHome from "../component/Dashbord/AllHome";
 import AllSeller from "../component/Dashbord/AllSeller";
+
 import AllUser from "../component/Dashbord/AllUser";
+import PendingSeller from "../component/Dashbord/PendingSeller";
 import Status from "../component/Dashbord/Status";
 import EachHomeDetails from "../component/OurCategory/SingleCategories/EachHomeDetails";
 import SingleCategories from "../component/OurCategory/SingleCategories/SingleCategories";
@@ -81,6 +83,11 @@ const routes = createBrowserRouter([
       {
         path: "/dashbord/sellers",
         element: <AllSeller></AllSeller>,
+      },
+
+      {
+        path: "/dashbord/sellerrequest",
+        element: <PendingSeller></PendingSeller>,
       },
     ],
   },
