@@ -4,6 +4,7 @@ import {ImPriceTags} from 'react-icons/im'
 import { useForm } from 'react-hook-form';
 import { BiSend } from "react-icons/bi";
 import { AuthContext } from '../../../Context/UserContext';
+import { toast } from 'react-hot-toast';
 
 const EachHomeDetails = () => {
 
@@ -15,6 +16,10 @@ const EachHomeDetails = () => {
     const email = user?.email;
 
     const {photo, _id, title} = details;
+
+    // const time = new Date().toLocaleTimeString();
+    const date = new Date().toDateString();
+    const timeDate = `${date}`;
 
     const {register , formState:{errors} , handleSubmit} = useForm();
 
@@ -34,8 +39,27 @@ const EachHomeDetails = () => {
             name,
             email,
             homeId : _id,
-            title
+            title,
+            timeDate
         };
+
+        fetch("http://localhost:5000/review", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(review),
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            toast.success("Review Added");
+            form.reset();
+            
+        })
+        .catch(err => {
+            toast.error(err.message)
+        });
 
         
     }
