@@ -15,7 +15,7 @@
 
 .homeCardDtls {
   left: 0;
-  bottom: -30px;
+  bottom: -40px;
   transition: 0.3s;
 }
 .homeCard:hover .homeCardDtls {
