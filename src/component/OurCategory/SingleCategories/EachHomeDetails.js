@@ -28,7 +28,7 @@ const EachHomeDetails = () => {
       
 
 
-        <div className='grid lg:grid-cols-2 sm:grid-cols-1 shadow-xl mt-20 bg-base-100 gap-10 '>
+        <div className='grid lg:grid-cols-2 sm:grid-cols-1  mt-20 bg-base-100 gap-10 '>
             <div>
                  <img src={details.photo} alt=""/>
 
@@ -168,6 +168,30 @@ const EachHomeDetails = () => {
         
             </div>
 
+        </div>
+
+        <hr className='mt-5' />
+
+
+
+
+        {/* add review section______________________________________ */}
+
+
+        <div className=' mt-14 bg-base-100 text-center '>
+            <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-800'>Do you Want To Add Any Review_?</h1>
+            <p className='mt-2 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-800'>Your Review is so much Important fou Us</p>
+
+            <p className='mt-5 mb-2'>Write Your Review</p>
+
+
+                    <form>
+                        <textarea className="textarea textarea-info lg:w-2/5 w-full" placeholder="Write Your Review"></textarea> <br/>
+                        <button
+                            type="submit"
+                            className="btn bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 mt-5 mb-10 text-white ">Submit<span className="pl-2"><BiSend size="20px" /></span>
+                        </button>
+                    </form>
         </div>
 
 
