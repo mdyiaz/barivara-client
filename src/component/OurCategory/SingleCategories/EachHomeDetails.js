@@ -24,11 +24,50 @@ const EachHomeDetails = () => {
     const {register , formState:{errors} , handleSubmit} = useForm();
 
 
+
+// handle booking function.................................................................
     const handleForm = data => {
         console.log("form", data);
+        const booking ={
+            customerName:data.name,
+            customerEmail:data.email,
+            customerPhone:data.phone,
+            customerTransactionId:data.transaction,
+            customerPaymentNumber:data.paymentNumber,
+            customerMessage:data.yourMessage,
+            bookingHouse: _id,
+            houseTitle:title,
+            housePhoto:photo,
+            bookingTime:timeDate
+        }
+        fetch("http://localhost:5000/booking",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(booking)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success("Booking SuccessFul")
+            })
+            .catch(err => {
+                toast.error(err.message)
+            });
+
+
+
     }
 
 
+
+
+
+
+
+
+    // handle review function.......................................................
     function handleReview (event)  {
         event.preventDefault();
         const form = event.target;
@@ -149,7 +188,12 @@ const EachHomeDetails = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                             <input type="text"  className="input input-bordered w-full "  />
+                             <input type="text" 
+                                    {...register("name")}
+                                    className="input input-bordered w-full"
+                                    defaultValue={name}  
+                                    disabled
+                                    />
                     </div>
 
                    
@@ -158,7 +202,12 @@ const EachHomeDetails = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                             <input type="Email" className="input input-bordered w-full " />
+                             <input type="Email"
+                                    {...register("email")}
+                                    className="input input-bordered w-full"
+                                    defaultValue={email} 
+                                    disabled
+                                    />
                     </div>
 
 
@@ -176,7 +225,7 @@ const EachHomeDetails = () => {
                         <label className="label">
                             <span className="label-text">Transaction ID</span>
                         </label>
-                             <input type="text" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
+                             <input type="text" {...register("transaction", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
                             {errors.name && <p className='text-red-500' role="alert"> {errors.name?.message}</p>}
  
                     </div>
@@ -186,7 +235,7 @@ const EachHomeDetails = () => {
                         <label className="label">
                             <span className="label-text">Payment Number</span>
                         </label>
-                             <input type="number" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
+                             <input type="number" {...register("paymentNumber", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
                             {errors.name && <p className='text-red-500' role="alert"> {errors.name?.message}</p>}
  
                     </div>
@@ -197,7 +246,7 @@ const EachHomeDetails = () => {
                         <label className="label">
                             <span className="label-text">Your Message</span>
                         </label>
-                             <input type="text" {...register("name", {required: "Name is required"})} placeholder="Enter Your Name" className="input input-bordered w-full " />
+                             <input type="text" {...register("yourMessage")} placeholder="Enter Your Name" className="input input-bordered w-full " />
                             {errors.name && <p className='text-red-500' role="alert"> {errors.name?.message}</p>}
  
                     </div>
