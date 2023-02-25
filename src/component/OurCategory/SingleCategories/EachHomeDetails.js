@@ -1,18 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import {ImPriceTags} from 'react-icons/im'
 import { useForm } from 'react-hook-form';
 import { BiSend } from "react-icons/bi";
+import { AuthContext } from '../../../Context/UserContext';
 
 const EachHomeDetails = () => {
 
     const details = useLoaderData();
 
+    const {user} = useContext(AuthContext);
+    // console.log(user?.email, user?.displayName);
+    const name = user?.displayName;
+    const email = user?.email;
+
+    const {photo, _id, title} = details;
+
     const {register , formState:{errors} , handleSubmit} = useForm();
 
 
     const handleForm = data => {
+        console.log("form", data);
+    }
 
+
+    function handleReview (event)  {
+        event.preventDefault();
+        const form = event.target;
+        const message = form.message.value;
+        const review = {
+            photo,
+            message,
+            name,
+            email,
+            homeId : _id,
+            title
+        };
+
+        
     }
 
     return (
@@ -182,11 +207,16 @@ const EachHomeDetails = () => {
             <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-800'>Do you Want To Add Any Review_?</h1>
             <p className='mt-2 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-800'>Your Review is so much Important fou Us</p>
 
-            <p className='mt-5 mb-2'>Write Your Review</p>
+            <p className='mt-5 mb-2 font-bold'>Write Your Review</p>
 
 
-                    <form>
-                        <textarea className="textarea textarea-info lg:w-2/5 w-full" placeholder="Write Your Review"></textarea> <br/>
+                    <form onSubmit={handleReview}>
+                        <textarea 
+                        className="textarea textarea-info lg:w-2/5 w-full" 
+                        placeholder="Write Your Review" 
+                        name='message'
+                        required >
+                        </textarea> <br/>
                         <button
                             type="submit"
                             className="btn bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 mt-5 mb-10 text-white ">Submit<span className="pl-2"><BiSend size="20px" /></span>
