@@ -5,6 +5,7 @@ import AllHome from "../component/Dashbord/AllHome";
 import AllSeller from "../component/Dashbord/AllSeller";
 
 import AllUser from "../component/Dashbord/AllUser";
+import BookingForSeller from "../component/Dashbord/BookingForSeller";
 import PendingSeller from "../component/Dashbord/PendingSeller";
 import Status from "../component/Dashbord/Status";
 import EachHomeDetails from "../component/OurCategory/SingleCategories/EachHomeDetails";
@@ -88,6 +89,11 @@ const routes = createBrowserRouter([
       {
         path: "/dashbord/sellerrequest",
         element: <PendingSeller></PendingSeller>,
+      },
+
+      {
+        path: "/dashbord/bookingforSeller",
+        element: <BookingForSeller></BookingForSeller>,
       },
     ],
   },
