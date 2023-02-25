@@ -4,15 +4,32 @@ import { toast } from 'react-hot-toast';
 
 const PendingSeller = () => {
 
-  const { data: sellers = [] } = useQuery({
+  const { data: sellers = [], refetch } = useQuery({
     queryKey: ["pending"],
     queryFn: () =>
       fetch("http://localhost:5000/pending").then((res) => res.json()),
   });
 
 
+
+// advertised seller...........................
   const approvedHandler  = id => {
       console.log(id)
+      const agree = window.confirm("Are you sure you want to Approve?");
+      if(agree){
+        fetch(`http://localhost:5000/approved/${id}`, {
+          method: 'PUT'
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.acknowledged){
+            console.log(data);
+            toast.success("Successful");
+            refetch();
+          }
+        })
+        .catch(err => console.error(err))
+      }
   }
 
   
