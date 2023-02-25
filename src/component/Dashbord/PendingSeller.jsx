@@ -1,38 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
 const PendingSeller = () => {
-
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ["pending"],
     queryFn: () =>
-      fetch("http://localhost:5000/pending").then((res) => res.json()),
+      fetch(" https://basabhara-server.vercel.app/pending").then((res) =>
+        res.json()
+      ),
   });
 
-
-
-// advertised seller...........................
-  const approvedHandler  = id => {
-      console.log(id)
-      const agree = window.confirm("Are you sure you want to Approve?");
-      if(agree){
-        fetch(`http://localhost:5000/approved/${id}`, {
-          method: 'PUT'
-        })
-        .then(res => res.json())
-        .then(data => {
-          if(data.acknowledged){
+  // advertised seller...........................
+  const approvedHandler = (id) => {
+    console.log(id);
+    const agree = window.confirm("Are you sure you want to Approve?");
+    if (agree) {
+      fetch(` https://basabhara-server.vercel.app/approved/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
             console.log(data);
             toast.success("Successful");
             refetch();
           }
         })
-        .catch(err => console.error(err))
-      }
-  }
+        .catch((err) => console.error(err));
+    }
+  };
 
-  
   return (
     <div>
       <div className="overflow-x-auto">
@@ -50,7 +48,7 @@ const PendingSeller = () => {
           </thead>
           <tbody>
             {sellers?.map((user, i) => (
-              <tr key={user._id} >
+              <tr key={user._id}>
                 <th>{i + 1}</th>
                 <td className="text-base">{user?.name}</td>
                 <td className="text-base">{user?.email}</td>
@@ -58,15 +56,28 @@ const PendingSeller = () => {
 
                 <td className="text-base">{user?.location}</td>
                 <td>
-                  <a className="btn btn-secondary btn-sm text-white" target="blank" href={user?.nidPic}>
+                  <a
+                    className="btn btn-secondary btn-sm text-white"
+                    target="blank"
+                    href={user?.nidPic}
+                  >
                     nid
                   </a>{" "}
-                  <a className="btn btn-secondary btn-sm text-white" target="blank" href={user?.photo}>
+                  <a
+                    className="btn btn-secondary btn-sm text-white"
+                    target="blank"
+                    href={user?.photo}
+                  >
                     photo
                   </a>
                 </td>
                 <td>
-                  <button onClick={ () => approvedHandler(user?._id)} className="btn bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 mt-5 mb-10 text-white btn-sm">approved</button>
+                  <button
+                    onClick={() => approvedHandler(user?._id)}
+                    className="btn bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 mt-5 mb-10 text-white btn-sm"
+                  >
+                    approved
+                  </button>
                 </td>
               </tr>
             ))}

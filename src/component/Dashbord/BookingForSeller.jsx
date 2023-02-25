@@ -2,23 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const BookingForSeller = () => {
-
-
-
-
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/booking");
+      const res = await fetch(" https://basabhara-server.vercel.app/booking");
       const data = await res.json();
       return data;
     },
   });
 
-
   return (
     <div>
-       <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
             <tr>
@@ -68,8 +63,6 @@ const BookingForSeller = () => {
                 <td>{booking?.customerTransactionId}</td>
                 <td>{booking?.customerPaymentNumber}</td>
                 <td>{booking?.customerMessage}</td>
-                
-                
               </tr>
             ))}
           </tbody>

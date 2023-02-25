@@ -6,7 +6,9 @@ const AllUser = () => {
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: () =>
-      fetch("http://localhost:5000/users").then((res) => res.json()),
+      fetch(" https://basabhara-server.vercel.app/users").then((res) =>
+        res.json()
+      ),
   });
 
   return (

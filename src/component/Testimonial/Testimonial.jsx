@@ -16,7 +16,7 @@ const Testimonial = () => {
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/review");
+      const res = await fetch(" https://basabhara-server.vercel.app/review");
       const data = await res.json();
       return data;
     },
@@ -69,14 +69,19 @@ const Testimonial = () => {
                     alt=""
                   />
 
-                  <p> <span className="font-bold">House Name: </span>{review.title}</p>
+                  <p>
+                    {" "}
+                    <span className="font-bold">House Name: </span>
+                    {review.title}
+                  </p>
                 </div>
                 <h2 className="text-2xl font-semibold">{review.name}</h2>
-                <p  className="text-xs mb-1"> {review.email}</p>
-                <p  className="text-xs mb-2"> <span className="font-bold">Date:</span> {review.timeDate}</p>
-                <p className="text-base">
-                  {review.message}
+                <p className="text-xs mb-1"> {review.email}</p>
+                <p className="text-xs mb-2">
+                  {" "}
+                  <span className="font-bold">Date:</span> {review.timeDate}
                 </p>
+                <p className="text-base">{review.message}</p>
               </div>
             </SwiperSlide>
           ))}
