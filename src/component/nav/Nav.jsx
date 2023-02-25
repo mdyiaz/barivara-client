@@ -33,6 +33,9 @@ function Nav() {
       <li className="text-white font-bold">
         <Link to="/dashbord">DashBoard</Link>
       </li>
+      <li className="text-white font-bold">
+        <Link to="/blog">Blog</Link>
+      </li>
 
     </>
   );
