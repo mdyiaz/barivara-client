@@ -50,7 +50,7 @@ const SellerRequest = () => {
               about,
               photo,
               nidPic,
-              seller: "pending",
+              userType: "pending",
             };
             console.log(sellerInfo);
 
@@ -66,6 +66,7 @@ const SellerRequest = () => {
               .then((data) => {
                 if (data.acknowledged) {
                   toast.success("seller Request Success");
+                  from.reset();
                 }
                 console.log(data);
               })

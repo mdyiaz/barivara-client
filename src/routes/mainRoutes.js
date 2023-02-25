@@ -2,6 +2,8 @@ import About from "../component/About/About";
 import Contact from "../component/Contact/Contact";
 import AddHome from "../component/Dashbord/AddHome";
 import AllHome from "../component/Dashbord/AllHome";
+import AllSeller from "../component/Dashbord/AllSeller";
+import AllUser from "../component/Dashbord/AllUser";
 import Status from "../component/Dashbord/Status";
 import EachHomeDetails from "../component/OurCategory/SingleCategories/EachHomeDetails";
 import SingleCategories from "../component/OurCategory/SingleCategories/SingleCategories";
@@ -71,6 +73,14 @@ const routes = createBrowserRouter([
       {
         path: "/dashbord/allhome",
         element: <AllHome />,
+      },
+      {
+        path: "/dashbord/users",
+        element: <AllUser></AllUser>,
+      },
+      {
+        path: "/dashbord/sellers",
+        element: <AllSeller></AllSeller>,
       },
     ],
   },
