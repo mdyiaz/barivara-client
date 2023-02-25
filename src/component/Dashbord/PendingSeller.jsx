@@ -1,13 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { toast } from 'react-hot-toast';
 
 const PendingSeller = () => {
+
   const { data: sellers = [] } = useQuery({
     queryKey: ["pending"],
     queryFn: () =>
       fetch("http://localhost:5000/pending").then((res) => res.json()),
   });
-  console.log(sellers);
+
+
+  const approvedHandler  = id => {
+      console.log(id)
+  }
+
+  
   return (
     <div>
       <div className="overflow-x-auto">
@@ -19,29 +27,29 @@ const PendingSeller = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>location</th>
-              <th>Last Login</th>
-              <th>Favorite Color</th>
+              <th>User Info</th>
+              <th>Approved User</th>
             </tr>
           </thead>
           <tbody>
             {sellers?.map((user, i) => (
-              <tr key={user._id}>
+              <tr key={user._id} >
                 <th>{i + 1}</th>
-                <td>{user?.name}</td>
-                <td>{user?.email}</td>
-                <td>{user?.phone}</td>
+                <td className="text-base">{user?.name}</td>
+                <td className="text-base">{user?.email}</td>
+                <td className="text-base">{user?.phone}</td>
 
-                <td>{user?.location}</td>
+                <td className="text-base">{user?.location}</td>
                 <td>
-                  <a className="btn btn-sm" target="blank" href={user?.nidPic}>
+                  <a className="btn btn-secondary btn-sm text-white" target="blank" href={user?.nidPic}>
                     nid
                   </a>{" "}
-                  <a className="btn btn-sm" target="blank" href={user?.photo}>
+                  <a className="btn btn-secondary btn-sm text-white" target="blank" href={user?.photo}>
                     photo
                   </a>
                 </td>
                 <td>
-                  <button className="btn btn-sm btn-primary">approved</button>
+                  <button onClick={ () => approvedHandler(user?._id)} className="btn bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-800 mt-5 mb-10 text-white btn-sm">approved</button>
                 </td>
               </tr>
             ))}

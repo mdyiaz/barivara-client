@@ -38,7 +38,7 @@ const DashbordLayout = () => {
           </label>
           <Link
             to="/"
-            className="lg:block hidden btn btn-warning btn-sm normal-case text-2xl"
+            className="lg:block hidden text-white font-bold  normal-case text-2xl"
           >
             বাড়িভাড়া
           </Link>
