@@ -20,10 +20,10 @@ const SignUp = () => {
     const fullName = first_name + last_name;
 
     const userInfo = {
-      first_name,
-      last_name,
+      name: first_name + " " + last_name,
       email,
       phone,
+      userType: "user",
     };
 
     singUp(email, password)
@@ -151,7 +151,12 @@ const SignUp = () => {
             </button>
           </div>
         </form>
-        <p>Already Have An Account? <span className="text-orange-500" ><Link to="/login">Login Here</Link></span> </p>
+        <p>
+          Already Have An Account?{" "}
+          <span className="text-orange-500">
+            <Link to="/login">Login Here</Link>
+          </span>{" "}
+        </p>
       </div>
     </div>
   );

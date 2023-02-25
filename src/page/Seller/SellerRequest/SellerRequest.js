@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Context/UserContext";
 
 const SellerRequest = () => {
-  const [seller_Photo, setSellerPhoto] = useState("");
-  const [nid_Photo, setnidPhoto] = useState("");
+  const { user, email } = useContext(AuthContext);
+
   const requestHandler = (event) => {
     event.preventDefault();
 
@@ -14,8 +16,7 @@ const SellerRequest = () => {
     const about = from.about.value;
     const sellerPhoto = from.sellerPhoto.files[0];
     const nidPhoto = from.nidPhoto.files[0];
-    // console.log(nidPhoto);
-    // console.log(sellerPhoto);
+
     const formData1 = new FormData();
     formData1.append("image", sellerPhoto);
 
@@ -28,60 +29,65 @@ const SellerRequest = () => {
       .then((res) => res.json())
       .then((imageData) => {
         const photo = imageData.data.url;
-        //  upload photo 2
-        // console.log(photo);
-        setSellerPhoto(photo);
+
+        // nidpic upload
+
+        const formData2 = new FormData();
+        formData2.append("image", nidPhoto);
+
+        fetch(url, {
+          method: "POST",
+          body: formData2,
+        })
+          .then((res) => res.json())
+          .then((imageData2) => {
+            const nidPic = imageData2.data.url;
+            const sellerInfo = {
+              name,
+              location,
+              phone,
+              nid,
+              about,
+              photo,
+              nidPic,
+              seller: "pending",
+            };
+            console.log(sellerInfo);
+
+            // send Database start
+            fetch(`http://localhost:5000/sellerrequest/${user?.email}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(sellerInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.acknowledged) {
+                  toast.success("seller Request Success");
+                }
+                console.log(data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
+            // send Database end
+          });
+
+        //  nidpic upload end
       });
 
     //
-    const formData2 = new FormData();
-    formData2.append("image", nidPhoto);
-
-    fetch(url, {
-      method: "POST",
-      body: formData2,
-    })
-      .then((res) => res.json())
-      .then((imageData2) => {
-        const photo = imageData2.data.url;
-        //  upload photo 2
-        // console.log(photo);
-        setnidPhoto(photo);
-      });
 
     //
 
-    const sellerInfo = {
-      name,
-      location,
-      phone,
-      nid,
-      about,
-      seller_Photo,
-      nid_Photo,
-    };
-    console.log(sellerInfo);
+    // console.log(sellerInfo);
 
     // image uploade imagebb
   };
 
-  // const imageUpload = (sellerPhoto) => {
-  //   const formData = new FormData();
-  //   formData.append("image", sellerPhoto);
-
-  //   const url =
-  //     "https://api.imgbb.com/1/upload?key=fd31eb1b7eccf01a95d0b1949fe0e46a";
-  //   fetch(url, {
-  //     method: "POST",
-  //     body: formData,
-  //   })
-  //     .then((res) => res.json())
-  //     .then((imageData) => {
-  //       const photo = imageData.data.url;
-  //       //  upload photo 2
-  //       // console.log(photo);
-  //     });
-  // };
   return (
     <div className="px-4">
       <div
@@ -99,6 +105,7 @@ const SellerRequest = () => {
               <input
                 type="name"
                 name="name"
+                defaultValue={user?.displayName}
                 placeholder="Enter Your Full Name"
                 className="flex-auto p-4 block rounded-lg font-medium outline-none border border-transparent border-stone-600 focus:border-primary focus:text-black "
               />
