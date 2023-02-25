@@ -13,10 +13,10 @@ import { Autoplay, Pagination } from "swiper";
 import { useQuery } from "@tanstack/react-query";
 
 const Testimonial = () => {
-  const { data: categorys = [] } = useQuery({
-    queryKey: ["categorys"],
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await fetch("category.json");
+      const res = await fetch("http://localhost:5000/review");
       const data = await res.json();
       return data;
     },
@@ -59,22 +59,23 @@ const Testimonial = () => {
           className="mySwiper"
         >
           <div className=""></div>
-          {categorys.map((category) => (
-            <SwiperSlide key={category._id}>
-              <div className="bg-gradient-to-r from-primary to-secondary mt-8 testimonial text-white p-4 mb-10 rounded-lg">
-                <div className="">
+          {reviews.map((review) => (
+            <SwiperSlide key={review._id}>
+              <div className=" border-primary border-[2px] mt-8 testimonial text-primary p-4 mb-10 rounded-lg">
+                <div className="grid grid-cols-2">
                   <img
                     className="w-[100px] h-[100px] rounded-full"
-                    src="https://i.pinimg.com/736x/11/95/34/1195346a00109c8dba6abfa3053f4839.jpg"
+                    src={review.photo}
                     alt=""
                   />
+
+                  <p> <span className="font-bold">House Name: </span>{review.title}</p>
                 </div>
-                <h2 className="text-2xl font-semibold">Md Masud Rana</h2>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat molestiae asperiores culpa assumenda recusandae,
-                  aliquam ex unde quae nesciunt vero adipisci! Similique fugiat,
-                  totam placeat distinctio laborum veniam eum sit.
+                <h2 className="text-2xl font-semibold">{review.name}</h2>
+                <p  className="text-xs mb-1"> {review.email}</p>
+                <p  className="text-xs mb-2"> <span className="font-bold">Date:</span> {review.timeDate}</p>
+                <p className="text-base">
+                  {review.message}
                 </p>
               </div>
             </SwiperSlide>

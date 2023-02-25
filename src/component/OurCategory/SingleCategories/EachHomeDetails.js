@@ -17,9 +17,9 @@ const EachHomeDetails = () => {
 
     const {photo, _id, title} = details;
 
-    const time = new Date().toLocaleTimeString();
+    // const time = new Date().toLocaleTimeString();
     const date = new Date().toDateString();
-    const timeDate = `${time}-${date}`;
+    const timeDate = `${date}`;
 
     const {register , formState:{errors} , handleSubmit} = useForm();
 
